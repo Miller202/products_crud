@@ -20,4 +20,18 @@ class ProductController extends Controller
         $products = Product::paginate(3);
         return response()->json($products);
     }
+
+    public function edit_product($id){
+        $product = Product::find($id);
+        return response()->json($product);
+    }
+
+    public function update_product(){
+        $product = Product::find(request()->id);
+        $product->name = request()->name;
+        $product->desc = request()->desc;
+        $product->type = request()->type;
+        $product->quantity = request()->quantity;
+        $product->update();
+    }
 }

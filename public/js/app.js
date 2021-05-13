@@ -2008,14 +2008,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: {},
+      id: '',
       name: '',
       desc: '',
       type: '',
-      quantity: ''
+      quantity: '',
+      edit_name: '',
+      edit_desc: '',
+      edit_type: '',
+      edit_quantity: ''
     };
   },
   mounted: function mounted() {
@@ -2043,6 +2092,32 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('list_products?page=' + page).then(function (response) {
         console.log(response.data);
         _this2.products = response.data;
+      });
+    },
+    editProduct: function editProduct(id) {
+      var _this3 = this;
+
+      axios.get('edit_product/' + id).then(function (response) {
+        _this3.id = response.data.id;
+        _this3.edit_name = response.data.name;
+        _this3.edit_desc = response.data.desc;
+        _this3.edit_type = response.data.type;
+        _this3.edit_quantity = response.data.quantity;
+      });
+    },
+    updateProduct: function updateProduct() {
+      var _this4 = this;
+
+      axios.put('update_product', {
+        id: this.id,
+        name: this.edit_name,
+        desc: this.edit_desc,
+        type: this.edit_type,
+        quantity: this.edit_quantity
+      }).then(function (response) {
+        console.log(response);
+
+        _this4.getResults();
       });
     }
   }
@@ -38359,6 +38434,14 @@ var render = function() {
             _vm._v("Cadastrar Produto")
           ]),
           _vm._v(" "),
+          _c("img", {
+            staticClass: "figure-img",
+            attrs: {
+              src:
+                "https://www.luiztools.com.br/wp-content/uploads/2017/07/CRUD.png"
+            }
+          }),
+          _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("form", [
               _c("div", { staticClass: "form-group" }, [
@@ -38531,7 +38614,29 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(product.quantity))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v("Edit | Delete")])
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              type: "button",
+                              "data-toggle": "modal",
+                              "data-target": "#exampleModal"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.editProduct(product.id)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    Editar\n                                "
+                            )
+                          ]
+                        )
+                      ])
                     ])
                   }),
                   0
@@ -38547,7 +38652,177 @@ var render = function() {
           )
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("form", [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "name" } }, [_vm._v("Nome")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.edit_name,
+                          expression: "edit_name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "editname",
+                        placeholder: "Nome do produto"
+                      },
+                      domProps: { value: _vm.edit_name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.edit_name = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "desc" } }, [
+                      _vm._v("Descrição")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.edit_desc,
+                          expression: "edit_desc"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "editdesc",
+                        placeholder: "Descrição do produto"
+                      },
+                      domProps: { value: _vm.edit_desc },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.edit_desc = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "type" } }, [_vm._v("Tipo")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.edit_type,
+                          expression: "edit_type"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "edittype",
+                        placeholder: "Tipo do produto (Ex: Vestuário...)"
+                      },
+                      domProps: { value: _vm.edit_type },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.edit_type = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "quantity" } }, [
+                      _vm._v("Quantidade")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.edit_quantity,
+                          expression: "edit_quantity"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        id: "editquant",
+                        placeholder: "Quantidade em estoque..."
+                      },
+                      domProps: { value: _vm.edit_quantity },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.edit_quantity = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "submit", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.updateProduct($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Salvar")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -38569,6 +38844,46 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Ação")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Modal title")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Fechar")]
+      )
     ])
   }
 ]

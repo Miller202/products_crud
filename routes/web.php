@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('save_product', 'ProductController@save_product');
 Route::get('list_products', 'ProductController@list_products');
+Route::get('edit_product/{id}', 'ProductController@edit_product');
+Route::put('update_product', 'ProductController@update_product');
