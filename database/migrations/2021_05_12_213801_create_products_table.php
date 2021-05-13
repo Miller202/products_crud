@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('desc');
             $table->string('type');
+            $table->Integer('quantity');
             $table->timestamps();
         });
     }

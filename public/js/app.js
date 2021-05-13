@@ -2002,13 +2002,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: {},
       name: '',
       desc: '',
-      type: ''
+      type: '',
+      quantity: ''
     };
   },
   mounted: function mounted() {
@@ -2021,7 +2028,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('save_product', {
         name: this.name,
         desc: this.desc,
-        type: this.type
+        type: this.type,
+        quantity: this.quantity
       }).then(function (response) {
         console.log(response);
 
@@ -38443,6 +38451,38 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "quantity" } }, [
+                  _vm._v("Quantidade")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.quantity,
+                      expression: "quantity"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "number",
+                    id: "quantity",
+                    placeholder: "Quantidade em estoque..."
+                  },
+                  domProps: { value: _vm.quantity },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.quantity = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
               _c(
                 "button",
                 {
@@ -38489,6 +38529,8 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(product.type))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.quantity))]),
+                      _vm._v(" "),
                       _c("td", [_vm._v("Edit | Delete")])
                     ])
                   }),
@@ -38522,6 +38564,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Descrição")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Tipo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Quant")]),
         _vm._v(" "),
         _c("th", [_vm._v("Ação")])
       ])
@@ -50918,8 +50962,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\projects_crud\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\projects_crud\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\products_crud\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\products_crud\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

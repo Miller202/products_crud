@@ -12,6 +12,7 @@ class ProductController extends Controller
         $product->name = request()->name;
         $product->desc = request()->desc;
         $product->type = request()->type;
+        $product->quantity = request()->quantity;
         $product->save();
     }
 

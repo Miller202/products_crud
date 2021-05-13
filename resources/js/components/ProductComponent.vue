@@ -19,6 +19,10 @@
                                 <label for="type">Tipo</label>
                                 <input type="text" v-model="type" class="form-control" id="type" placeholder="Tipo do produto (Ex: Vestuário...)">
                             </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantidade</label>
+                                <input type="number" v-model="quantity" class="form-control" id="quantity" placeholder="Quantidade em estoque...">
+                            </div>
                             <button type="submit" @click.prevent="saveProduct" class="btn btn-primary">Cadastrar</button>
                         </form>
                     </div>
@@ -37,6 +41,7 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">Descrição</th>
                                 <th scope="col">Tipo</th>
+                                <th scope="col">Quant</th>
                                 <th>Ação</th>
                             </tr>
                             </thead>
@@ -46,6 +51,7 @@
                                 <td>{{product.name}}</td>
                                 <td>{{product.desc}}</td>
                                 <td>{{product.type}}</td>
+                                <td>{{product.quantity}}</td>
                                 <td>Edit | Delete</td>
                             </tr>
                             </tbody>
@@ -66,7 +72,8 @@
                 products: {},
                 name: '',
                 desc: '',
-                type: ''
+                type: '',
+                quantity: ''
             }
         },
         mounted() {
@@ -77,7 +84,8 @@
                 axios.post('save_product',{
                     name: this.name,
                     desc: this.desc,
-                    type: this.type
+                    type: this.type,
+                    quantity: this.quantity
                 }).then(response => {
                     console.log(response);
                     this.getResults();
