@@ -38630,7 +38630,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-primary",
+                            staticClass: "btn btn-outline-primary btn-sm",
                             attrs: {
                               type: "button",
                               "data-toggle": "modal",
@@ -38652,7 +38652,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-danger",
+                            staticClass: "btn btn-outline-danger btn-sm",
                             attrs: { type: "button" },
                             on: {
                               click: function($event) {
@@ -38833,7 +38833,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-success",
+                      staticClass: "btn btn-outline-success",
                       attrs: { type: "submit", "data-dismiss": "modal" },
                       on: {
                         click: function($event) {
@@ -38909,7 +38909,7 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-danger",
+          staticClass: "btn btn-outline-danger",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
         [_vm._v("Fechar")]

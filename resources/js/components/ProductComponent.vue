@@ -53,11 +53,11 @@
                                 <td>{{product.type}}</td>
                                 <td>{{product.quantity}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" @click="editProduct(product.id)"
+                                    <button type="button" class="btn btn-outline-primary btn-sm" @click="editProduct(product.id)"
                                             data-toggle="modal" data-target="#exampleModal">
                                         Editar
                                     </button>
-                                    <button type="button" class="btn btn-danger" @click="deleteProduct(product.id)">
+                                    <button type="button" class="btn btn-outline-danger btn-sm" @click="deleteProduct(product.id)">
                                         Remover
                                     </button>
                                     </td>
@@ -98,11 +98,11 @@
                                 <label for="quantity">Quantidade</label>
                                 <input type="number" v-model="edit_quantity" class="form-control" id="editquant" placeholder="Quantidade em estoque...">
                             </div>
-                            <button type="submit" @click.prevent="updateProduct" data-dismiss="modal" class="btn btn-success">Salvar</button>
+                            <button type="submit" @click.prevent="updateProduct" data-dismiss="modal" class="btn btn-outline-success">Salvar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
