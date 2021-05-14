@@ -2052,6 +2052,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2118,6 +2121,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         _this4.getResults();
+      });
+    },
+    deleteProduct: function deleteProduct(id) {
+      var _this5 = this;
+
+      axios["delete"]('delete_product/' + id).then(function (response) {
+        console.log(response);
+
+        _this5.getResults();
       });
     }
   }
@@ -38633,6 +38645,24 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                                    Editar\n                                "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteProduct(product.id)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    Remover\n                                "
                             )
                           ]
                         )

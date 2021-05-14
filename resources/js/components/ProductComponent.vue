@@ -57,6 +57,9 @@
                                             data-toggle="modal" data-target="#exampleModal">
                                         Editar
                                     </button>
+                                    <button type="button" class="btn btn-danger" @click="deleteProduct(product.id)">
+                                        Remover
+                                    </button>
                                     </td>
                             </tr>
                             </tbody>
@@ -168,6 +171,13 @@
                     console.log(response);
                     this.getResults();
                 });
+            },
+            deleteProduct(id){
+                axios.delete('delete_product/'+id)
+                    .then(response => {
+                        console.log(response);
+                        this.getResults();
+                    });
             }
         }
     }
