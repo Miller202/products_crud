@@ -1,2 +1,2 @@
 # Product Manager
-   - Sistema para o gerenciamento de projetos
+   - Sistema de planejamento e gerenciamento de produtos
